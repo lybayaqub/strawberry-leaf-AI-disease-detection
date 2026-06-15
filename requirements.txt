@@ -1,0 +1,57 @@
+# =====================
+# Web Framework
+# =====================
+django>=4.2
+djangorestframework>=3.14
+flask>=3.0
+fastapi>=0.110
+uvicorn>=0.29
+
+# =====================
+# ML / Deep Learning
+# =====================
+tensorflow>=2.15
+torch>=2.2
+torchvision>=0.17
+keras>=3.0
+
+# =====================
+# Image Processing
+# =====================
+opencv-python>=4.9
+Pillow>=10.2
+albumentations>=1.4
+
+# =====================
+# Data & Utilities
+# =====================
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+scikit-learn>=1.4
+scipy>=1.12
+
+# =====================
+# Explainable AI
+# =====================
+grad-cam>=1.5
+
+# =====================
+# Database
+# =====================
+pymongo>=4.6
+psycopg2-binary>=2.9
+
+# =====================
+# API & Auth
+# =====================
+python-dotenv>=1.0
+pydantic>=2.6
+PyJWT>=2.8
+django-cors-headers>=4.3
+
+# =====================
+# Dev Tools
+# =====================
+jupyter>=1.0
+ipykernel>=6.29
