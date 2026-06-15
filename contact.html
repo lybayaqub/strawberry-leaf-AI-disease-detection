@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAI - Contact Us</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for the leaf and chatbot -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define the futuristic, dark, network background */
+        .futuristic-bg {
+            background-color: #000411; 
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0);
+            background-size: 50px 50px; 
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb; 
+        }
+
+        /* Neon Card effect for the main content blocks */
+        .neon-card {
+            border: 2px solid transparent;
+            border-radius: 1.5rem; 
+            box-shadow: 0 0 10px rgba(0, 220, 255, 0.2), 0 0 20px rgba(0, 220, 255, 0.05);
+            background: rgba(1, 15, 30, 0.85); 
+            position: relative;
+        }
+
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(0, 220, 255, 0.6), rgba(0, 100, 255, 0.1), rgba(0, 220, 255, 0.6));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Leaf SVG Icon for Logo */
+        .leaf-icon {
+            display: inline-block;
+            width: 1.25em;
+            height: 1.25em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* Input styling to match the rest of the site */
+        .neon-input {
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(0, 220, 255, 0.2);
+            color: white !important;
+            border-radius: 0.5rem;
+        }
+        .neon-input:focus {
+            border-color: #00dcff;
+            box-shadow: 0 0 5px rgba(0, 220, 255, 0.8);
+        }
+
+    </style>
+</head>
+<body class="futuristic-bg flex flex-col items-center">
+
+    <!-- Navbar -->
+    <header class="w-full bg-black/50 border-b border-cyan-800/50">
+        <a href="dashboard.html" class="flex items-center space-x-2 text-xl font-bold hover:text-cyan-400 transition">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-xl font-bold">
+                <a href="dashboard.html" class="flex items-center space-x-2 text-xl font-bold hover:text-cyan-400 transition">
+                <!-- Leaf SVG Icon -->
+                <svg class="leaf-icon w-6 h-6 text-cyan-500" viewBox="0 0 24 24">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 21 2.3 21 2.3a1 1 0 0 0-1-1c-2.7 0-5.4 5.5-16.1 7.2A7 7 0 0 1 11 20Z"/>
+                    <path d="M3 13.8c4.3 0 7.8 3.5 7.8 7.8c0 .2 0 .4-.1 .5C12.3 22 10.8 22 9.5 22A7.8 7.8 0 0 1 3 13.8Z"/>
+                </svg>
+                <span class="text-white text-lg font-semibold tracking-wider">AgriAI</span>
+
+            </div>
+            <nav class="space-x-4 text-sm md:text-base">
+                <a href="about_page.html" class="text-white hover:text-cyan-400 transition">About Us</a>
+                <a href="contact.html" class="text-cyan-400 hover:text-white transition font-bold">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-11/12 max-w-4xl mx-auto p-6 md:p-12 my-10 space-y-8">
+        
+        <div class="neon-card p-8 sm:p-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-cyan-400 mb-4">
+                Contacting AgriAI: A Journey of Self-Discovery
+            </h1>
+            <p class="text-xl text-gray-300 font-light italic">
+                We'd love to chat! (Assuming 'chat' means 'send us a form and wait awkwardly').
+            </p>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 neon-card p-8">
+                <h2 class="text-2xl font-semibold text-white mb-6 border-b border-cyan-800/50 pb-2">
+                    Send a Message to the Void (Our Inbox)
+                </h2>
+                <form onsubmit="event.preventDefault(); handleContactSubmit();" class="space-y-6">
+                    
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Your Designation (e.g., Human, Overlord, Enthusiast)</label>
+                        <input type="text" id="name" placeholder="Name or Title" required
+                               class="w-full p-3 neon-input">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Quantum Address (Email)</label>
+                        <input type="email" id="email" placeholder="Your Most Used Email" required
+                               class="w-full p-3 neon-input">
+                    </div>
+
+                    <div>
+                        <label for="topic" class="block text-sm font-medium text-gray-400 mb-1">Reason for Interruption</label>
+                        <select id="topic" required class="w-full p-3 neon-input appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select an Earthly Concern</option>
+                            <option value="bug">Found a bug (It's not a feature!)</option>
+                            <option value="praise">Undying Praise and Money</option>
+                            <option value="blighty">Blighty needs more cat pictures</option>
+                            <option value="general">I'm lost and need directions</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Your Deepest Secrets (Message)</label>
+                        <textarea id="message" rows="4" placeholder="Be descriptive, but brief. We have plants to save." required
+                                  class="w-full p-3 neon-input"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full py-3 bg-cyan-500 text-black font-bold rounded-xl shadow-lg shadow-cyan-500/50 hover:bg-cyan-400 transition duration-300 ease-in-out transform hover:scale-[1.01] text-lg">
+                        Transmit Message to Space-Time
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Side Contact Methods -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <div class="neon-card p-6">
+                    <h3 class="text-xl font-semibold text-yellow-400 mb-3 flex items-center space-x-2">
+                        <i data-lucide="speech" class="w-5 h-5"></i>
+                        <span>Alternative Contact Methods</span>
+                    </h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li>**Telepathic Link:** (Temporarily disabled for maintenance on Blighty's mind palace.)</li>
+                        <li>**Smoke Signals:** Our sensor array is calibrated for organic smoke. Results may vary based on wind speed.</li>
+                        <li>**Carrier Pigeon:** Please ensure your pigeon has read our documentation first.</li>
+                        <li>**Fax:** Wait, is this 1999? We still have a machine, just in case.</li>
+                    </ul>
+                </div>
+                
+                <div class="neon-card p-6">
+                    <h3 class="text-xl font-semibold text-red-400 mb-3 flex items-center space-x-2">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        <span>Our Physical Location</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        You can find us deep inside the internet, protected by several layers of firewalls and a very grumpy sysadmin. <br><br>
+                        **Physical Address:** The 5th Dimension, Left Turn at Pluto.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Chatbot Icon (Bottom right) -->
+    <div class="fixed bottom-6 right-6 z-30">
+        <div class="relative flex flex-col items-center">
+            <span class="text-sm text-white font-medium mb-1 mr-6">Need Help?</span>
+            <div class="w-16 h-16 bg-cyan-700/50 border border-cyan-400 rounded-full flex items-center justify-center p-2 shadow-xl shadow-cyan-500/30 cursor-pointer hover:bg-cyan-700 transition duration-200">
+                <i data-lucide="bot" class="w-10 h-10 text-cyan-300"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Box/Modal (To replace alert()) -->
+    <div id="messageBox" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-xl neon-card max-w-sm w-11/12 text-center">
+            <h3 id="messageTitle" class="text-xl font-bold mb-4 text-cyan-400"></h3>
+            <p id="messageContent" class="mb-6 text-gray-300"></p>
+            <button onclick="closeMessageBox()" class="px-6 py-2 bg-cyan-500 text-black font-medium rounded-lg hover:bg-cyan-400 transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // --- Utility Functions for Message Box ---
+        function showMessageBox(title, content) {
+            document.getElementById('messageTitle').textContent = title;
+            document.getElementById('messageContent').textContent = content;
+            document.getElementById('messageBox').classList.remove('hidden');
+            document.getElementById('messageBox').classList.add('flex');
+        }
+
+        function closeMessageBox() {
+            document.getElementById('messageBox').classList.add('hidden');
+            document.getElementById('messageBox').classList.remove('flex');
+        }
+
+        // --- Form Submission Handler ---
+        function handleContactSubmit() {
+            const topic = document.getElementById('topic').value;
+            let responseText = "Your cosmic signal has been received and is now queueing behind 3,000,000 other important messages. We'll get back to you when the coffee machine is fixed.";
+
+            if (topic === 'praise') {
+                responseText = "Undying praise? We're sending a robot gardener to your house immediately. Expect a response within 48 standard Earth hours.";
+            } else if (topic === 'blighty') {
+                responseText = "Urgent! Cat pictures received! Blighty's mood has instantly improved. Your request is now prioritized at the top of the stack. Thanks for saving the day.";
+            }
+            
+            showMessageBox(
+                "Transmission Successful!",
+                responseText
+            );
+
+            // Optional: Reset the form here if needed
+            // document.querySelector('form').reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAI - Dashboard</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for the sidebar and chatbot -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define the futuristic, dark, network background */
+        .futuristic-bg {
+            background-color: #000411; 
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0);
+            background-size: 50px 50px; 
+            min-height: 100vh; /* Use min-height to ensure full coverage */
+            width: 100vw;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb; /* Light text color */
+        }
+
+        /* Neon Card effect for the main content blocks */
+        .neon-card {
+            border: 2px solid transparent;
+            border-radius: 1.5rem; 
+            box-shadow: 0 0 10px rgba(0, 220, 255, 0.2), 0 0 20px rgba(0, 220, 255, 0.05);
+            background: rgba(1, 15, 30, 0.85); 
+            position: relative;
+        }
+
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(0, 220, 255, 0.6), rgba(0, 100, 255, 0.1), rgba(0, 220, 255, 0.6));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Active sidebar link style */
+        .sidebar-active {
+            background-color: rgba(0, 220, 255, 0.1);
+            border-left: 4px solid #00dcff;
+            color: #00dcff;
+        }
+        .sidebar-link {
+            transition: all 0.15s ease-in-out;
+        }
+        .sidebar-link:hover {
+            background-color: rgba(0, 220, 255, 0.05);
+            color: #00dcff;
+        }
+
+        /* Leaf SVG Icon for Logo */
+        .leaf-icon {
+            display: inline-block;
+            width: 1.25em;
+            height: 1.25em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a1f33;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0088ff;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #00dcff;
+        }
+    </style>
+</head>
+<body class="futuristic-bg flex flex-col custom-scrollbar">
+
+    <!-- Navbar -->
+    <header class="w-full bg-black/50 border-b border-cyan-800/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-xl font-bold">
+                <a href="dashboard.html" class="flex items-center space-x-2 text-xl font-bold hover:text-cyan-400 transition">
+                <!-- Leaf SVG Icon -->
+                <svg class="leaf-icon w-6 h-6 text-cyan-500" viewBox="0 0 24 24">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 21 2.3 21 2.3a1 1 0 0 0-1-1c-2.7 0-5.4 5.5-16.1 7.2A7 7 0 0 1 11 20Z"/>
+                    <path d="M3 13.8c4.3 0 7.8 3.5 7.8 7.8c0 .2 0 .4-.1 .5C12.3 22 10.8 22 9.5 22A7.8 7.8 0 0 1 3 13.8Z"/>
+                </svg>
+                <span class="text-white text-lg font-semibold tracking-wider">AgriAI</span>
+                </a>
+            </div>
+            <nav class="space-x-4 text-sm md:text-base">
+                <!-- LINK TO ABOUT US PAGE -->
+                <a href="about_page.html" class="text-white hover:text-cyan-400 transition">About Us</a>
+                <!-- LINK TO CONTACT PAGE -->
+                <a href="contact.html" class="text-white hover:text-cyan-400 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        
+        <!-- Left Sidebar (Desktop) -->
+        <aside class="w-56 bg-black/50 border-r border-cyan-800/50 p-4 hidden md:block">
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg sidebar-active transition duration-150">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <!-- SIDEBAR LINK UPDATED: Link to the upload page -->
+                <a href="upload_image.html" class="flex items-center space-x-3 p-3 rounded-lg text-gray-400 hover:bg-cyan-800/20 hover:text-cyan-300 transition duration-150">
+                    <i data-lucide="upload" class="w-5 h-5"></i>
+                    <span class="font-medium">Upload Image</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-400 hover:bg-cyan-800/20 hover:text-cyan-300 transition duration-150">
+                    <i data-lucide="list-checks" class="w-5 h-5"></i>
+                    <span class="font-medium">View Results</span>
+                </a>
+                <!-- History, Feedback, Settings links are excluded -->
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-4 sm:p-6 lg:p-8">
+            <h1 class="text-3xl font-light text-cyan-400 mb-6">Dashboard Overview</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Center Bot Card -->
+                <div class="lg:col-span-2 neon-card p-8 flex flex-col items-center justify-center text-center">
+                    <i data-lucide="bot-message-square" class="w-24 h-24 text-cyan-300 animate-pulse"></i>
+                    <h2 class="text-3xl sm:text-4xl font-light text-white mt-4 mb-8">
+                        Ready to detect disease?
+                    </h2>
+                    <!-- MAIN BUTTON UPDATED: Link to the upload page -->
+                    <a href="upload_image.html" class="px-8 py-3 bg-cyan-500 text-black font-bold rounded-xl shadow-lg shadow-cyan-500/50 hover:bg-cyan-400 transition duration-300 ease-in-out transform hover:scale-[1.03] text-lg">
+                        Upload Leaf Image
+                    </a>
+                </div>
+
+                <!-- Right Recent Activity Card -->
+                <div class="lg:col-span-1 neon-card p-6 flex flex-col space-y-4">
+                    <h3 class="text-lg font-semibold text-cyan-400 border-b border-cyan-800/50 pb-2">Recent Activity</h3>
+                    
+                    <div class="bg-gray-900/50 p-4 rounded-xl flex items-start space-x-4">
+                        <!-- Leaf Image Placeholder -->
+                        <div class="w-16 h-16 flex-shrink-0 bg-green-700 rounded-lg overflow-hidden flex items-center justify-center shadow-lg">
+                             <svg class="leaf-icon w-10 h-10 text-lime-300" viewBox="0 0 24 24">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 21 2.3 21 2.3a1 1 0 0 0-1-1c-2.7 0-5.4 5.5-16.1 7.2A7 7 0 0 1 11 20Z"/>
+                                <path d="M3 13.8c4.3 0 7.8 3.5 7.8 7.8c0 .2 0 .4-.1 .5C12.3 22 10.8 22 9.5 22A7.8 7.8 0 0 1 3 13.8Z"/>
+                            </svg>
+                        </div>
+                        
+                        <div>
+                            <p class="text-sm font-medium text-white">Last Analysis: <span class="text-green-400">Healthy (99% confidence)</span></p>
+                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <!-- Tip of the Day -->
+                    <div class="bg-gray-900/50 p-4 rounded-xl border-l-4 border-yellow-500">
+                        <p class="text-sm font-semibold text-yellow-400 mb-1">Tip of the Day</p>
+                        <p class="text-xs text-gray-300">Ensure proper ventilation to prevent mold growth in humid conditions.</p>
+                    </div>
+
+                    <a href="#" class="text-cyan-400 text-sm hover:underline text-right mt-2">View all activity</a>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Footer (Matching the subtle style of the image) -->
+    <footer class="w-full bg-black/50 border-t border-cyan-800/50 mt-12 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 text-xs text-gray-500 space-y-2 md:space-y-0">
+            <p>&copy; 2025 AgriAI. All rights reserved.</p>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
+                <a href="#" class="hover:text-cyan-400">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Chatbot Icon (Bottom right) -->
+    <div class="fixed bottom-6 right-6 z-30">
+        <div class="relative flex flex-col items-center">
+            <span class="text-sm text-white font-medium mb-1 mr-6">Need Help?</span>
+            <div class="w-16 h-16 bg-cyan-700/50 border border-cyan-400 rounded-full flex items-center justify-center p-2 shadow-xl shadow-cyan-500/30 cursor-pointer hover:bg-cyan-700 transition duration-200">
+                <i data-lucide="bot" class="w-10 h-10 text-cyan-300"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
