@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAI - View Results</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .futuristic-bg {
+            background-color: #000411;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            width: 100vw;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+        }
+
+        .neon-card {
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+            box-shadow: 0 0 10px rgba(0, 220, 255, 0.2),
+                        0 0 20px rgba(0, 220, 255, 0.05);
+            background: rgba(1, 15, 30, 0.85);
+            position: relative;
+        }
+
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(0, 220, 255, 0.6),
+                                              rgba(0, 100, 255, 0.1),
+                                              rgba(0, 220, 255, 0.6));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .sidebar-link {
+            transition: all 0.15s ease-in-out;
+        }
+
+        .sidebar-link:hover {
+            background-color: rgba(0, 220, 255, 0.05);
+            color: #00dcff;
+        }
+    </style>
+</head>
+
+<body class="futuristic-bg flex flex-col">
+
+<!-- Navbar -->
+<header class="w-full bg-black/50 border-b border-cyan-800/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-2 text-xl font-bold">
+            <a href="dashboard.html" class="flex items-center space-x-2 hover:text-cyan-400 transition">
+                <svg class="w-6 h-6 text-cyan-500" viewBox="0 0 24 24">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 21 2.3 21 2.3a1 1 0 0 0-1-1c-2.7 0-5.4 5.5-16.1 7.2A7 7 0 0 1 11 20Z"/>
+                    <path d="M3 13.8c4.3 0 7.8 3.5 7.8 7.8c0 .2 0 .4-.1 .5C12.3 22 10.8 22 9.5 22A7.8 7.8 0 0 1 3 13.8Z"/>
+                </svg>
+                <span class="text-white">AgriAI</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="flex flex-1 max-w-7xl mx-auto w-full">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-black/50 border-r border-cyan-800/50 p-4 hidden md:block">
+        <nav class="space-y-2">
+            <a href="dashboard.html" class="sidebar-link flex items-center space-x-3 p-3 rounded-lg text-gray-400">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="upload_image.html" class="sidebar-link flex items-center space-x-3 p-3 rounded-lg text-gray-400">
+                <i data-lucide="upload"></i>
+                <span>Upload Image</span>
+            </a>
+
+            <a href="view_results.html" class="flex items-center space-x-3 p-3 rounded-lg bg-cyan-900/20 text-cyan-400">
+                <i data-lucide="file-text"></i>
+                <span>View Results</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-6">
+        <h1 class="text-3xl font-light text-cyan-400 mb-6">Analysis Results</h1>
+
+        <div class="neon-card p-8 flex flex-col lg:flex-row items-center gap-8">
+
+            <!-- Image -->
+            <div class="lg:w-1/2 bg-gray-900 rounded-xl p-4 flex items-center justify-center">
+                <img id="resultImage" class="w-full h-auto object-contain rounded-lg">
+            </div>
+
+            <!-- Info -->
+            <div class="lg:w-1/2 space-y-6 text-white">
+
+                <h2 id="diseaseName" class="text-2xl font-bold text-cyan-400"></h2>
+
+                <p id="diseaseDescription" class="text-lg leading-relaxed"></p>
+
+                <p id="diseaseSolution" class="text-lg font-semibold text-lime-400"></p>
+
+                <!-- 🔥 EXPLAINABLE AI BUTTON -->
+                <div class="pt-4">
+                    <a href="explainable_ai.html"
+                       class="inline-flex items-center justify-center px-6 py-3 rounded-xl 
+                              bg-gradient-to-r from-cyan-500 to-blue-600 
+                              text-black font-bold shadow-lg 
+                              hover:from-cyan-400 hover:to-blue-500 
+                              hover:scale-105 transition-all duration-300">
+
+                        <i data-lucide="brain" class="w-5 h-5 mr-2"></i>
+                        Explainable Insights
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    const DISEASE_INFO = {
+    "Angular_Leafspot": {
+        "description": "Angular Leaf Spot causes angular lesions on the leaves and may lead to leaf drop.",
+        "solution": "Use copper-based fungicides, remove infected leaves, and ensure proper plant spacing."
+    },
+    "Anthracnose_Fruit_Rot": {
+        "description": "Anthracnose Fruit Rot affects the fruit causing dark sunken spots.",
+        "solution": "Apply appropriate fungicides, remove affected fruits, and avoid overhead watering."
+    },
+    "Blossom_Blight": {
+        "description": "Blossom Blight leads to browning and wilting of flowers.",
+        "solution": "Prune affected flowers, maintain good air circulation, and use recommended fungicides."
+    },
+    "Gray_Mold": {
+        "description": "Gray Mold causes fuzzy gray growth on leaves, stems, and fruits.",
+        "solution": "Keep humidity low, remove infected plant parts, and apply fungicides if necessary."
+    },
+    "Leaf_Blight": {
+        "description": "Leaf Blight causes browning and necrosis of leaves.",
+        "solution": "Remove infected leaves, avoid wetting foliage, and apply fungicide sprays."
+    },
+    "Leaf_Spot": {
+        "description": "Leaf Spot creates small dark spots on leaves, affecting photosynthesis.",
+        "solution": "Use disease-free seeds, remove infected leaves, and apply fungicides."
+    },
+    "Powdery_Mildew_Fruit": {
+        "description": "Powdery Mildew on fruit forms white powdery coating affecting fruit quality.",
+        "solution": "Reduce humidity, prune infected areas, and apply sulfur or potassium bicarbonate sprays."
+    },
+    "Powdery_Mildew_Leaf": {
+        "description": "Powdery Mildew on leaves creates white powdery patches reducing growth.",
+        "solution": "Ensure good airflow, remove infected leaves, and use fungicidal sprays."
+    }
+};
+    const resultImage = localStorage.getItem('uploadedImage');
+    const diseaseData = JSON.parse(localStorage.getItem('disease') || '{}');
+
+    if (resultImage && diseaseData.name) {
+        document.getElementById('resultImage').src = resultImage;
+        document.getElementById('diseaseName').textContent = diseaseData.name;
+
+        const info = DISEASE_INFO[diseaseData.name] || {
+            description: "No description available.",
+            solution: "No solution available."
+        };
+
+        document.getElementById('diseaseDescription').textContent = info.description;
+        document.getElementById('diseaseSolution').textContent =
+            "Recommended Action: " + info.solution;
+
+    } else {
+        document.getElementById('diseaseName').textContent = "No result available.";
+    }
+</script>
+
+</body>
+</html>

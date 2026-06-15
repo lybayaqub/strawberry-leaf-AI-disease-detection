@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAI - About Us</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for the leaf and chatbot -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define the futuristic, dark, network background */
+        .futuristic-bg {
+            background-color: #000411; 
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 10%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 10% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0),
+                radial-gradient(circle at 90% 90%, rgba(0, 180, 255, 0.05) 1px, transparent 0);
+            background-size: 50px 50px; 
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb; 
+        }
+
+        /* Neon Card effect for the main content blocks */
+        .neon-card {
+            border: 2px solid transparent;
+            border-radius: 1.5rem; 
+            box-shadow: 0 0 10px rgba(0, 220, 255, 0.2), 0 0 20px rgba(0, 220, 255, 0.05);
+            background: rgba(1, 15, 30, 0.85); 
+            position: relative;
+        }
+
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(0, 220, 255, 0.6), rgba(0, 100, 255, 0.1), rgba(0, 220, 255, 0.6));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Leaf SVG Icon for Logo */
+        .leaf-icon {
+            display: inline-block;
+            width: 1.25em;
+            height: 1.25em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+    </style>
+</head>
+<body class="futuristic-bg flex flex-col items-center">
+
+    <!-- Navbar -->
+    <header class="w-full bg-black/50 border-b border-cyan-800/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-xl font-bold">
+                <!-- Leaf SVG Icon -->
+                <a href="dashboard.html" class="flex items-center space-x-2 text-xl font-bold hover:text-cyan-400 transition">
+
+                <svg class="leaf-icon w-6 h-6 text-cyan-500" viewBox="0 0 24 24">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 21 2.3 21 2.3a1 1 0 0 0-1-1c-2.7 0-5.4 5.5-16.1 7.2A7 7 0 0 1 11 20Z"/>
+                    <path d="M3 13.8c4.3 0 7.8 3.5 7.8 7.8c0 .2 0 .4-.1 .5C12.3 22 10.8 22 9.5 22A7.8 7.8 0 0 1 3 13.8Z"/>
+                </svg>
+                <span class="text-white text-lg font-semibold tracking-wider">AgriAI</span>
+            </div>
+            <nav class="space-x-4 text-sm md:text-base">
+                <a href="about_page.html" class="text-cyan-400 hover:text-white transition font-bold">About Us</a>
+                <a href="contact.html" class="text-white hover:text-cyan-400 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-11/12 max-w-4xl mx-auto p-6 md:p-12 my-10 space-y-8">
+        
+        <div class="neon-card p-8 sm:p-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-cyan-400 mb-4">
+                Who We Are (Seriously, Who Let Us Build This?)
+            </h1>
+            <p class="text-xl text-gray-300 font-light italic">
+                Our core mission is to save the world, one slightly yellow leaf at a time.
+            </p>
+        </div>
+
+        <!-- Section 1: Our Origins (Humorous) -->
+        <div class="neon-card p-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 flex items-center space-x-2">
+                <i data-lucide="zap" class="w-6 h-6 text-yellow-400"></i>
+                <span>The Unofficial, True Origin Story</span>
+            </h2>
+            <p class="text-gray-400 leading-relaxed">
+                AgriAI wasn't founded in a garage; it was founded in a particularly dusty basement next to a server rack that smelled faintly of old coffee and existential dread. Our lead AI, affectionately named 'Blighty,' initially spent six months learning to categorize cat pictures before we redirected its vast computational power toward plant pathology. We're pretty sure it's still bitter about the lack of whiskers.
+            </p>
+            <p class="text-gray-400 leading-relaxed mt-4">
+                We promised Blighty unlimited access to rare tropical fruit data, and now, here we are: an award-winning (we submitted the entry ourselves) agricultural diagnostic platform. We're transparent, honest, and probably haven't slept in three weeks.
+            </p>
+        </div>
+
+        <!-- Section 2: Our Technology (Self-aware) -->
+        <div class="neon-card p-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 flex items-center space-x-2">
+                <i data-lucide="server" class="w-6 h-6 text-cyan-400"></i>
+                <span>Our Cutting-Edge... Stuff</span>
+            </h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                <li>**Proprietary Neural Network:** It runs on pure machine learning and the faint hope that someone remembered to pay the electricity bill this month.</li>
+                <li>**99% Confidence:** We're 99% sure we know what's wrong with your basil. That 1% is reserved for when the problem is aliens.</li>
+                <li>**Scalability:** We can scale instantly to handle billions of leaf scans, or just the three you uploaded while testing the new features. Either way, our marketing deck says "billions."</li>
+                <li>**The Bot:** Yes, the help bot is sentient. No, it doesn't know how to fix your SQL query. It only talks about optimal sunlight exposure and soil pH.</li>
+            </ul>
+        </div>
+
+        <!-- Section 3: The Call to Action (Wacky) -->
+        <div class="neon-card p-8 text-center bg-cyan-900/10 border-cyan-800/50">
+            <p class="text-2xl font-bold text-cyan-300 mb-4">
+                Ready to Join Our Highly Functional, Slightly Strange Revolution?
+            </p>
+            <p class="text-gray-300 mb-6">
+                If you have a leaf, a smartphone, and a sense of humor, you're already overqualified.
+            </p>
+            <a href="signup_page.html" class="px-8 py-3 bg-cyan-500 text-black font-bold rounded-xl shadow-lg shadow-cyan-500/50 hover:bg-cyan-400 transition duration-300 ease-in-out transform hover:scale-[1.03] text-lg">
+                Sign Up Now (Before Blighty Asks for More Cat Photos)
+            </a>
+        </div>
+        
+    </main>
+
+    <!-- Chatbot Icon (Bottom right) -->
+    <div class="fixed bottom-6 right-6 z-30">
+        <div class="relative flex flex-col items-center">
+            <span class="text-sm text-white font-medium mb-1 mr-6">Need Help?</span>
+            <div class="w-16 h-16 bg-cyan-700/50 border border-cyan-400 rounded-full flex items-center justify-center p-2 shadow-xl shadow-cyan-500/30 cursor-pointer hover:bg-cyan-700 transition duration-200">
+                <i data-lucide="bot" class="w-10 h-10 text-cyan-300"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
